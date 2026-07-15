@@ -20,4 +20,4 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Email của tài khoản quản trị viên duy nhất trong hệ thống.
 // Tài khoản đăng nhập bằng email này sẽ thấy được trang /Quản trị.
-export const ADMIN_EMAIL = 'admin@bonggiay.com';
+export const ADMIN_EMAIL = 'Bonggiaybenluc@gmail.com';

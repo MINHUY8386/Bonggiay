@@ -135,7 +135,7 @@ function AdminDashboard({ orders, users, products }: any) {
         const d = new Date(now);
         d.setDate(d.getDate() - i);
         const dateStr = d.toLocaleDateString('vi-VN');
-        const daySum = validOrders.filter((o: any) => o.date === dateStr).reduce((sum: number, o: any) => sum + o.total, 0);
+        const daySum = validOrders.filter((o: any) => o.order_date === dateStr).reduce((sum: number, o: any) => sum + o.total, 0);
         data.push({ name: `${d.getDate()}/${d.getMonth() + 1}`, revenue: daySum });
       }
     } else if (revenueFilter === 'month') {
@@ -145,7 +145,7 @@ function AdminDashboard({ orders, users, products }: any) {
         data.push({ name: `Tuần ${i}`, revenue: 0 });
       }
       validOrders.forEach((o: any) => {
-        const d = parseDate(o.date);
+        const d = parseDate(o.order_date);
         if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) {
           const week = Math.min(Math.ceil(d.getDate() / 7), 4) - 1;
           data[week].revenue += o.total;
@@ -159,7 +159,7 @@ function AdminDashboard({ orders, users, products }: any) {
         data.push({ name: `Tháng ${monthNum + 1}`, revenue: 0 });
       }
       validOrders.forEach((o: any) => {
-        const d = parseDate(o.date);
+        const d = parseDate(o.order_date);
         if (d.getFullYear() === currentYear && Math.floor(d.getMonth() / 3) === currentQuarter) {
           const monthIndex = d.getMonth() % 3;
           data[monthIndex].revenue += o.total;
@@ -171,7 +171,7 @@ function AdminDashboard({ orders, users, products }: any) {
         data.push({ name: `T${i + 1}`, revenue: 0 });
       }
       validOrders.forEach((o: any) => {
-        const d = parseDate(o.date);
+        const d = parseDate(o.order_date);
         if (d.getFullYear() === currentYear) {
           data[d.getMonth()].revenue += o.total;
         }
@@ -483,7 +483,7 @@ function AdminOrders({ orders, refreshOrders }: any) {
                   <tr key={i} className="border-b border-[#EBE7E0] last:border-0 hover:bg-[#FAF8F5]/50 transition-colors">
                     <td className="p-4 font-mono text-[#5A634A] font-bold">{o.id}</td>
                     <td className="p-4 text-[#2D3325] font-medium">{o.customer}</td>
-                    <td className="p-4 text-[#7D7D5A]">{o.date}</td>
+                    <td className="p-4 text-[#7D7D5A]">{o.order_date}</td>
                     <td className="p-4 font-bold text-[#D97757]">{o.total.toLocaleString('vi-VN')}đ</td>
                     <td className="p-4">
                       <select 
