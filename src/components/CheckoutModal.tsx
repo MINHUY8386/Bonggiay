@@ -74,8 +74,13 @@ export default function CheckoutModal({ isOpen, onClose, cart, onConfirm, user }
             </div>
             <h2 className="text-2xl font-bold text-[#2D3325] font-serif mb-2">Thanh toán chuyển khoản</h2>
             <p className="text-[#7D7D5A] mb-6 text-sm">Sử dụng ứng dụng ngân hàng quét mã QR dưới đây để thanh toán cho đơn hàng.</p>
-            <div className="bg-white p-3 rounded-2xl shadow-sm border border-[#EBE7E0] mb-6 inline-block">
-              <img src={`https://img.vietqr.io/image/mbbank-0399810748-compact.png?amount=${total}&addInfo=${encodeURIComponent('Thanh toan don hang ' + formData.name)}&accountName=NGUYEN%20VAN%20A`} alt="QR Code" className="w-48 h-48 md:w-64 md:h-64 object-contain" />
+            <div className="bg-white p-3 rounded-2xl shadow-sm border border-[#EBE7E0] mb-4 inline-block">
+              <img src={`https://img.vietqr.io/image/bidv-8893420561-compact.png?amount=${total}&addInfo=${encodeURIComponent('Thanh toan don hang ' + formData.name)}&accountName=${encodeURIComponent('LE NGUYEN MINH HUY')}`} alt="QR Code" className="w-48 h-48 md:w-64 md:h-64 object-contain" />
+            </div>
+            <div className="text-center mb-6 text-sm">
+              <p className="font-bold text-[#2D3325]">LE NGUYEN MINH HUY</p>
+              <p className="text-[#5A634A] font-mono tracking-wide">8893420561</p>
+              <p className="text-[#7D7D5A]">Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (BIDV)</p>
             </div>
             <div className="flex gap-4 w-full max-w-sm mt-auto md:mt-0">
               <button type="button" onClick={() => setStep('form')} className="flex-1 py-3.5 rounded-xl border border-[#EBE7E0] text-[#7D7D5A] font-bold uppercase tracking-widest text-sm hover:bg-[#FAF8F5] transition-colors cursor-pointer">

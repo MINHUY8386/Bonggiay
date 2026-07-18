@@ -554,10 +554,17 @@ function AdminUsers({ users }: any) {
 
 function AdminSystem({ systemSettings, setSystemSettings }: any) {
   const [formData, setFormData] = useState(systemSettings);
+  const [saving, setSaving] = useState(false);
 
-  const handleSave = () => {
-    setSystemSettings(formData);
-    alert('Đã lưu cài đặt!');
+  const handleSave = async () => {
+    setSaving(true);
+    const ok = await setSystemSettings(formData);
+    setSaving(false);
+    if (ok) {
+      alert('Đã lưu cài đặt!');
+    } else {
+      alert('LƯU THẤT BẠI — thay đổi chưa được ghi vào database. Vui lòng đăng xuất, đăng nhập lại đúng tài khoản admin rồi thử lại.');
+    }
   };
 
   return (
