@@ -18,6 +18,14 @@ if (GA_ID) {
     (window as any).dataLayer.push(args);
   }
   (window as any).gtag = gtag;
+  // Cho phép rõ ràng việc thu thập dữ liệu — tránh bị "Consent Mode" mặc định
+  // của Google giữ lại không gửi dữ liệu đi (im lặng, không báo lỗi).
+  gtag('consent', 'default', {
+    ad_storage: 'granted',
+    analytics_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+  });
   gtag('js', new Date());
   gtag('config', GA_ID);
 }
