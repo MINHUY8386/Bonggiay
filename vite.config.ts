@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig(() => {
   return {
     // Khi deploy lên GitHub Pages ở dạng https://<user>.github.io/<repo>/,
@@ -10,7 +12,7 @@ export default defineConfig(() => {
     // trong GitHub Actions (xem .github/workflows/deploy.yml).
     // Chạy "npm run dev" ở local thì base mặc định là "/".
     base: process.env.VITE_BASE_PATH || '/',
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), cloudflare()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
